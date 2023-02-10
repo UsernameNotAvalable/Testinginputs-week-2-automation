@@ -1,104 +1,126 @@
-import time
 
-# business process automation (BPA) - Explained
-# as filling out forms etc instead of filling out paperwork infront of someone, filling payrolls, doing leave etc.
+player1 = input ("Please state your name player 1: ")
+while True:
+    if any (char.isdigit() for char in player1):
+        print ("Please do not include digits in your name.")
+        player1 = input ("Please state your name player 1: ")
+    else:
+        break
 
-#deliverables - a list of things the software should be doing
-    # in terms of a house - the frame is the first deliverable, then electronics, then plumbing, each is a deliverable.
-    # They can also be called as a milestone
-    
-#stakeholders - anyone that it effets / invested / uses the app or thing.
-    
-#Sponsors - the ones that decide on the final decision and usually the cause of bad faults.
-    
-#when doing work, try get involved in anything you're interested in, like do documentation - do the coffee run type stuff.
-    #be that bounce board for discussion
-    # minimal viable product - the starting point and bridge out
-    
-    
-    #waterfall vs agile work place -> waterfall is just down the steps, you go from the start to finish without going back.
-    # if you miss something that's in V2 not V1 which you're still on.
-    #Agile is just going and going around constantly develope, the cycle of 1-6
-    #Develop, design, plan, meet, evaluate, test
-    
-    
-    # number 1 thing to reccomend to laern coding - come up with a project - write your own and start coding it.
-    # use Pi Charm next week - Try another after 2 weeks of usage.
-    
-    #elif = else if, can have as man as you want just don't overlap.
-    #else is the ending statement, so if you have no more ifs or if that's the last testing part use ELSE.
-    
-    #marcus github link -> it's in the additional content area within the automation page.
-    
-    
-
-
-
-inputstring = input ("Please write your input string here: ")
-
-print (" Why did you write this?", inputstring, "<< this thing.")
+player2 = input ("Player 2, please state your name: ")
 
 while True:
-    numberOne = input ("Place your first number here: ")
-    if numberOne.isdigit():
-        print ("Next, ")
-        break
+    if any (char.isdigit() for char in player2):
+        print ("Please do not include digits in your name.")
+        player2 = input("Player 2, please state your name: ")
+    elif player2 == player1:
+        print("Choose different names.")
+        player2 = input("Player 2, please state your name: ")
     else:
-        print("This is not an number or digit, try again.")
-
-#numbered 1 for courtesy and consistency with test on line 52.
-attempt = 1
-
-numberTwo = input ("Place your second number here: ")
-
-while not numberTwo.isdigit():
-    numberTwo = input ("Try again. \nPlace your second number here: ")
-    if attempt == 3:
-        print("Try to follow the instructions and start again.")
         break
+
+#allowedinputs = "rock", "Rock", "scissors", "Scissors", "paper", "Paper"
+
+print ("Welcome ", player1, " and ", player2, " let's begin the game!")
+
+# player1InputAttempt = 1
+# while True:
+#     player1Input = input (player1 + " please choose one of the 3 listed options: rock, paper or scissors: ")
+#     if player1Input.lower == "rock" or "scissors" or "paper":
+#         break
+#     else:
+#         print ("Please type in the options with a lower or upper case. ")
+#         print ("You're currently at attempt: ", player1InputAttempt)
+#         player1InputAttempt = player1InputAttempt + 1
+#
+# player2InputAttempt = 1
+# while True:
+#     player2Input = input(player2 + " please choose one of the 3 listed options: rock, paper or scissors: ")
+#     if player2Input.lower == "rock" or "scissors" or "paper":
+#         break
+#     else:
+#         print("Please type in the options with a lower or upper case. ")
+#         print ("You're currently at attempt: ", player2InputAttempt)
+#         player1InputAttempt = player2InputAttempt + 1
+
+player1InputAttempt = 1
+player2InputAttempt = 1
+score1 = 0
+score2 = 0
+#needs help
+while score1 or score2 != 3:
+    while True:
+        player1Input = input(player1 + " please choose one of the 3 listed options: rock, paper or scissors: ")
+        if player1Input == "rock" or "scissors" or "paper":
+            break
+        else:
+            print("Please type in the options with a lower or upper case. ")
+            print("You're currently at attempt: ", player1InputAttempt)
+            player1InputAttempt = player1InputAttempt + 1
+
+    while True:
+        player2Input = input(player2 + " please choose one of the 3 listed options: rock, paper or scissors: ")
+        if player2Input == "rock" or "scissors" or "paper":
+            break
+        else:
+            print("Please type in the options with a lower or upper case. ")
+            print("You're currently at attempt: ", player2InputAttempt)
+            player1InputAttempt = player2InputAttempt + 1
+
+    player1Input = player1Input.lower()
+    player2Input = player2Input.lower()
+
+
+    print("test1")
+    if score1 == 3:
+            print("Good job ", player1, ", you won!")
+            break
+
+    elif score2 == 3:
+            print("Good job ", player2, ", you won!")
+            break
+
+    elif player1Input.lower == player2Input.lower:
+            print("Good job you drew, go again.")
+
+    elif player1Input == "rock" or player2Input == "scissors":
+            score1 = score1 + 1
+            print(score1, " : ", score2)
+
+    elif player1Input == "paper" and player2Input == "rock":
+            score1 = score1 + 1
+            print(score1, " : ", score2)
+
+    elif player1Input == "scissors" and player2Input == "paper":
+            score1 = score1 + 1
+            print(score1, " : ", score2)
+
+    elif player2Input == "rock" and player1Input == "scissors":
+            score2 = score2 + 1
+            print(score1, " : ", score2)
+
+    elif player2Input == "paper" and player1Input == "rock":
+            score2 = score2 + 1
+            print(score1, " : ", score2)
+
+    elif player2Input == "scissors" and player1Input == "paper":
+            score2 = score2 + 1
+            print(score1, " : ", score2)
+
+
+    #else:
+        #print ("Good job!")
+        #break
+
     else:
-        print("You're currently at attempt: ", attempt)
-        attempt = attempt + 1
-    
-time.sleep(1)
-print ("We will add them together and check if that's a prime number, only if you can follow instructions.")
-print("calculating...")
-time.sleep(1)
-print ("Your numbers added equal: ", int(numberOne) + int(numberTwo))
-time.sleep(0.5)
-primeNumber = int(numberOne) + int(numberTwo)
+        play_again = input("Would you like to go again? (y/n): ")
+        if play_again != "y":
+            break
+        else:
+            score1 = 0
+            score2 = 0
 
-print("Testing...")
-#print (primeNumber)
-time.sleep(1)
-flag = False
+print ("Thank you for playing.")
 
-if primeNumber == 1:
-    print(primeNumber, "This is not a prime number.")
-elif primeNumber > 1:
-        for i in range(2, primeNumber):
-            if (primeNumber % i ) == 0:
-                flag = True
-                break
-if flag:
-    print(primeNumber, "is not a prime number.")
-else:
-    print(primeNumber, "is a prime number.")
-    
-attemptvote = 1
-canVote = input ("Please state your age in digit form: ")
 
-while not canVote.isdigit():
-    canVote = input ("Restate your age as a number: ")
-    if attemptvote == 3:
-        print("Alright, start again. Too many attemps.")
-        break
-    else:
-        print("You're currently at attempt: ", attemptvote)
-        attemptvote = attemptvote + 1
-    
-    
-if int(canVote) >= 18:
-    print ("You can now vote")
-else:
-    print ("come back when you're older.")
+
